@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "Default_Layout";
+}
+@model HomeIndexViewModel
+
+
+<section>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Kitap İsmi</th>
+                <th scope="col">Yazarı</th>
+                <th scope="col">Sayfa Sayısı</th>
+                <th scope="col">Kategorisi</th>
+                <th scope="col">Fiyatı</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach (var bookItem in Model.BookList)
+            {
+                <tr>
+                    <th scope="row">@bookItem.bookID</th>
+                    <th>@bookItem.name</th>
+                    <td>@bookItem.writer</td>
+                    <td>@bookItem.numberPage</td>
+                    <td>@bookItem.categoryName</td>
+                    <td>@bookItem.price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

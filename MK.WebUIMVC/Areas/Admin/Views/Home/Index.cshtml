@@ -1,0 +1,49 @@
+﻿@using MK.WebUIMVC.Models
+@{
+    Layout = "_LayoutAdmin";
+}
+@model HomeIndexViewModel
+
+
+
+
+
+<h2 class="mb-3 d-flex justify-content-center">Kitap Admin Sayfası</h2>
+
+<section>
+    @using (Html.BeginForm())
+    {
+        <p class="category d-flex justify-content-start">
+            İsme Göre Kitap Ara:@Html.TextBox("ara",null,new{@class="form-control",@placeholder="Ürün Adı" })
+            <input type="submit" name="btn" value="Kitap Ara" />
+        </p>
+    }
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Kitap İsmi</th>
+                <th scope="col">Yazarı</th>
+                <th scope="col">Sayfa Sayısı</th>
+                <th scope="col">Kategorisi</th>
+                <th scope="col">Fiyatı</th>
+                <th scope="col">İşlemler</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach (var bookItem in Model.BookList)
+            {
+                <tr>
+                    <th scope="row">@bookItem.bookID</th>
+                    <th>@bookItem.name</th>
+                    <td>@bookItem.writer</td>
+                    <td>@bookItem.numberPage</td>
+                    <td>@bookItem.categoryName</td>
+                    <td>@bookItem.price</td>
+                    <td><button class="btn btn-warning">Güncelle</button><button class="btn btn-danger">Sil</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

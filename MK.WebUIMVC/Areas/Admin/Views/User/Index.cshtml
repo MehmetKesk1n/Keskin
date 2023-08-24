@@ -1,0 +1,28 @@
+﻿@model MK.WebUIMVC.Models.HomeIndexViewModel
+@ViewData["Ana Sayfa"]
+
+
+<section>   
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User Name</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col">İşlemler</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach (var userItem in Model.UserList)
+            {
+                <tr>
+                    <th scope="row">@userItem.userID</th>
+                    <th>@userItem.userName</th>
+                    <td>@userItem.email</td>
+                    <td><button class="btn btn-warning">Güncelle</button><button class="btn btn-danger">Sil</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

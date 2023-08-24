@@ -1,0 +1,38 @@
+﻿@using MK.WebUIMVC.Models
+@{
+    Layout = "_LayoutAdmin";
+}
+@model HomeIndexViewModel
+
+<h2 class="mb-3 d-flex justify-content-center">Kategori Admin Sayfası</h2>
+@using (Html.BeginForm())
+{
+    <p class="category d-flex justify-content-start">
+        Kategoriye Göre Kitap Ara:@Html.TextBox("aracat",null,new{@class="form-control",@placeholder="Kategori Adı" })
+        <input type="submit" name="btn" value="Kitap Ara" />
+    </p>
+}
+<section>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Kategori İsmi</th>
+                <th scope="col">Tanımı</th>
+                <th scope="col">İşlemler</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach (var categoryItem in Model.CategoryList)
+            {
+                <tr>
+                    <th scope="row">@categoryItem.categoryID</th>
+                    <th>@categoryItem.categoryName</th>
+                    <td>@categoryItem.description</td>
+                    <td><button class="btn btn-warning">Güncelle</button><button class="btn btn-danger">Sil</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
