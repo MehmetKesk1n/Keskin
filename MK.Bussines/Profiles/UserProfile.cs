@@ -15,7 +15,6 @@ namespace MK.Business.Profiles
         public UserProfile()
         {
             CreateMap<User, UserGetDto>();
-
             CreateMap<UserPostDto, User>();
             CreateMap<UserPutDto, User>();
         }

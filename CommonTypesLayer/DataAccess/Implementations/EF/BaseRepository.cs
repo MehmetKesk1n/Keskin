@@ -14,7 +14,7 @@ namespace CommonTypesLayer.DataAccess.Implementations.EF
         where TEntity : class, IEntity
         where TContext : DbContext, new()
     {
-        //CRUD işlemlerinin nasıl gerçekleşeceğini yazdığım sınıf
+       
         public async Task DeleteAsync(TEntity entitiy)
         {
             using var ctx = new TContext();
@@ -40,11 +40,6 @@ namespace CommonTypesLayer.DataAccess.Implementations.EF
 
         public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, params string[] includeList)
         {
-            //delagate generic
-            //func
-            //act
-            //pridicate
-            //Expression<Func<Product>,bool>
             using (var ctx = new TContext())
             {
                 IQueryable<TEntity> dbSet = ctx.Set<TEntity>();

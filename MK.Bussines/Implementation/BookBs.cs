@@ -53,11 +53,6 @@ namespace MK.Business.Implementation
         }
         public async Task<ApiResponse<List<BookGetDto>>> GetProductsAsync(params string[] includeList)
         {
-            //Loglama
-            //Authenticaiton
-
-            //VeriTabanından getAll ile ürünleri getirecek....
-            //return _repo.GetAll(null,includeList);
 
             var book = await _repo.GetAllAsync(includeList: includeList);
             if (book.Count > 0)
@@ -69,25 +64,16 @@ namespace MK.Business.Implementation
             }
 
             throw new NotFoundException("Aradığınız Ürün Bulunamadı.");
-
-            //Loglama
-            //Validation
-            //Authenticaiton
         }
 
         public async Task<ApiResponse<List<BookGetDto>>> GetProductsByPriceAsync(decimal min, decimal max, params string[] includeList)
         {
-            //Loglama
-            //Authenticaiton
-
-
             if (min > max)
                 throw new BadRequestException("Min Değeri Max değerinden küçük olamaz!");
             if (min == max)
                 throw new BadRequestException("Min değeri ile eşit olamaz");
             if (min < 0 || max < 0)
                 throw new BadRequestException("min veya max değerinleri negatif olamaz!");
-            // tüm validasyon parametrelerini burada işleyebilirisiniz...
 
             var book = await _repo.GetByPriceRangeAsycn(min, max, includeList);
 
@@ -97,10 +83,6 @@ namespace MK.Business.Implementation
                 return ApiResponse<List<BookGetDto>>.Success(StatusCodes.Status200OK, returnList);
             }
             throw new BadRequestException("Ürün Yok");
-
-            //Loglama
-            //Validation
-            //Authenticaiton
         }
 
 
@@ -111,13 +93,9 @@ namespace MK.Business.Implementation
                 throw new BadRequestException("Kaydedecek Ürün yok");
             if (dto.Price <= 0)
                 throw new BadRequestException("Kaydedilecek Ürün fiyatı 0'dan büyük olmalıdır.");
-            // validasyonlar....
             var book = _mapper.Map<Book>(dto);
             var insertedProduct = await _repo.InsertAsync(book);
             return ApiResponse<Book>.Success(StatusCodes.Status200OK, insertedProduct);
-
-
-
         }
 
         public async Task<ApiResponse<NoData>> UpdateAsync(BookPutDto dto)
@@ -129,8 +107,6 @@ namespace MK.Business.Implementation
             var book = _mapper.Map<Book>(dto);
             await _repo.UpdateAsync(book);
             return ApiResponse<NoData>.Success(StatusCodes.Status200OK);
-
-
         }
     }
 }

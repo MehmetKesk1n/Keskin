@@ -44,7 +44,7 @@ namespace MK.Business.Implementation
                 return ApiResponse<UserGetDto>.Success(StatusCodes.Status200OK, dto);
             }
 
-            throw new NotFoundException("Aradığınız Ürün Bulunamadı.");
+            throw new NotFoundException("Aradığınız Kullanıcı Bulunamadı.");
         }
 
         public async Task<ApiResponse<List<UserGetDto>>> GetUsersAsync(params string[] includeList)
@@ -58,7 +58,7 @@ namespace MK.Business.Implementation
                 return response;
             }
 
-            throw new NotFoundException("Aradığınız Ürün Bulunamadı.");
+            throw new NotFoundException("Aradığınız Kullanıcı Bulunamadı.");
         }
         public async Task<ApiResponse<List<UserGetDto>>> GetLoginAsync(UserGetDto getDto)
         {
@@ -71,7 +71,7 @@ namespace MK.Business.Implementation
                 return response;
             }
 
-            throw new NotFoundException("Aradığınız Ürün Bulunamadı.");
+            throw new NotFoundException("Aradığınız Kullanıcı Bulunamadı.");
         }
 
         public async Task<ApiResponse<User>> InsertAsync(UserPostDto dto)

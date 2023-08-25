@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace CommonTypesLayer.Utilities
 {
     public class ApiResponse<T>
-    {//JSON formatında dışarıya açtığımız Durum sınıfını ifade ediyor.
+    {
         public T Data { get; set; }
-        [JsonIgnore]//bu property sadece bizim kullanmamız için proje içinde kullanacağımız bir propertydir. bu sınıf json'a dönüştürülürken bu prop dönüştürülmeyektir.
+        [JsonIgnore]
         public int StatusCode { get; set; }
         public List<string> ErrorMessage { get; set; }
 
@@ -39,10 +39,4 @@ namespace CommonTypesLayer.Utilities
             };
         }
     }
-
-    /*
-     data:"",
-    errorMessage:"hghg"
-    StatusCodes
-     */
 }
